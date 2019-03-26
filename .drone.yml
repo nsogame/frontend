@@ -10,6 +10,11 @@ steps:
 
 - name: deploy
   image: drillster/drone-rsync
+  environment:
+    RSYNC_USER:
+      from_secret: rsync_user
+    RSYNC_KEY:
+      from_secret: rsync_key
   settings:
     hosts:
     - nso.iptq.io
