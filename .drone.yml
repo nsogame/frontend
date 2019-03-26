@@ -16,6 +16,7 @@ steps:
     source: ./dist
     target: /var/www/nso
     recursive: true
+    key: ${RSYNC_KEY}
   secrets: [ rsync_user, rsync_key ]
   when:
     branch: [ master ]
