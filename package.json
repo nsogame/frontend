@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "parcel": "parcel"
+  },
   "dependencies": {
     "axios": "^0.18.0",
     "buefy": "^0.7.3",
