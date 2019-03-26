@@ -15,6 +15,7 @@ steps:
     - nso.iptq.io
     source: ./dist
     target: /var/www/nso
-    secrets: [ rsync_user, rsync_key ]
+    recursive: true
+  secrets: [ rsync_user, rsync_key ]
   when:
     branch: [ master ]
