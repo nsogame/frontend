@@ -21,9 +21,11 @@ const actions = {
         context.commit(PURGE_AUTH);
     },
     [REGISTER](context, credentials) {
-        return axios.post(API_BASE + "/users/register", credentials).then(response => {
-            context.commit(SET_AUTH, response.data);
-            resolve();
+        return new Promise((resolve, reject) => {
+            axios.post(API_BASE + "/users/register", credentials).then(response => {
+                context.commit(SET_AUTH, response.data);
+                resolve();
+            }).catch(reject);
         });
     },
 };
