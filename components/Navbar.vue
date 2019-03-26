@@ -19,14 +19,36 @@
                 <div class="navbar-start">
                     <router-link class="navbar-item" :to="{name: 'index'}">Home</router-link>
                 </div>
-                <div class="navbar-end">
-                    <router-link class="navbar-item" :to="{name: 'login'}">Login</router-link>
-                    <router-link class="navbar-item" :to="{name: 'register'}">Register</router-link>
+                <div class="navbar-end" v-if="isAuthenticated">
+                    <router-link class="navbar-item" :to="{name: 'users/profile'}">Profile</router-link>
+                    <a class="navbar-item" v-on:click="logout">Logout</a>
+                </div>
+                <div class="navbar-end" v-if="!isAuthenticated">
+                    <router-link class="navbar-item" :to="{name: 'users/login'}">Login</router-link>
+                    <router-link class="navbar-item" :to="{name: 'users/register'}">Register</router-link>
                 </div>
             </div>
         </div>
     </nav>
 </template>
+
+<script>
+    import { mapGetters } from "vuex";
+    import { LOGOUT } from "~/store/actions.type";
+
+    export default {
+        computed: {
+            ...mapGetters(["currentUser", "isAuthenticated"])
+        },
+        methods: {
+            logout() {
+                this.$store.dispatch(LOGOUT).then(() => {
+                    this.$router.push({name: "index"});
+                });
+            }
+        }
+    }
+</script>
 
 <style lang="scss" scoped>
 #nav-toggle-state {

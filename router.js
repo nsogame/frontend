@@ -12,12 +12,17 @@ export default new Router({
         },
         {
             path: "/users/login",
-            name: "login",
+            name: "users/login",
             component: () => import("./views/Login"),
         },
         {
+            path: "/users/profile",
+            name: "users/profile",
+            component: () => import("./views/Profile"),
+        },
+        {
             path: "/users/register",
-            name: "register",
+            name: "users/register",
             component: () => import("./views/Register"),
         },
     ],

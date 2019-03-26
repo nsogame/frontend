@@ -20,10 +20,9 @@ steps:
     - nso.iptq.io
     port: [ 22 ]
     user: "${RSYNC_USER}"
-    source: ./dist
+    source: ./dist/*
     target: /var/www/nso
     recursive: true
     key: "${RSYNC_KEY}"
-  secrets: [ rsync_user, rsync_key ]
   when:
     branch: [ master ]

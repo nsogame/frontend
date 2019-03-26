@@ -50,7 +50,7 @@
                         </form>
                     </div>
                     <div class="has-text-grey has-text-centered">
-                        <router-link :to="{name: 'login'}">Already have an account?</router-link>
+                        <router-link :to="{name: 'users/login'}">Already have an account?</router-link>
                     </div>
                 </div>
             </div>
@@ -60,6 +60,7 @@
 
 <script>
     import axios from "axios";
+    import { Toast } from "buefy/dist/components/toast";
     import { API_BASE } from "~/config";
     import { REGISTER } from "~/store/actions.type";
 
@@ -94,12 +95,12 @@
                     password: this.password,
                     captcha: this.captcha
                 }).then(() => {
-                    this.$router.push({name: "login"});
+                    this.$router.push({name: "users/login"});
                 }).catch(err => {
                     this.loading = false;
                     this.loadCaptcha();
                     this.captcha = "";
-                    console.log("failed:", err);
+                    Toast.open("Something went wrong: " + err.message);
                 });
             },
         },

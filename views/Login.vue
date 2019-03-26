@@ -1,25 +1,28 @@
 <template>
     <section class="hero is-fullheight">
         <div class="hero-body">
-            <div class="container has-text-centered">
+            <div class="container">
                 <div class="column is-4 is-offset-4">
-                    <h3 class="title has-text-grey">Login</h3>
-                    <p class="subtitle has-text-grey">Please login to proceed.</p>
+                    <h3 class="title has-text-grey has-text-centered">Login</h3>
+                    <p class="subtitle has-text-grey has-text-centered">Please login to proceed.</p>
                     <div class="box">
-                        <figure class="avatar">
-                            <img src="https://placehold.it/128x128">
+                        <figure class="avatar has-text-centered">
+                            <img src="https://placehold.it/128x128?text=?">
                         </figure>
-                        <form>
+                        <form v-on:submit.prevent="$validator.validateAll(); login();">
                             <div class="field">
                                 <div class="control">
-                                    <label class="label">Email</label>
-                                    <input class="input is-medium" type="email" placeholder="Email" autofocus="">
+                                    <label class="label">Username or Email</label>
+                                    <input name="identifier" class="input is-medium" v-model="identifier" v-validate="'required'" v-bind:class="{'is-danger': errors.has('identifier')}" type="text" placeholder="Username or Email" autocomplete="off" autofocus="">
                                 </div>
+                                <p class="help is-danger" v-show="errors.has('identifier')">
+                                    {{ errors.first('identifier') }}
+                                </p>
                             </div>
                             <div class="field">
                                 <div class="control">
                                     <label class="label">Password</label>
-                                    <input class="input is-medium" type="password" placeholder="Password">
+                                    <input name="password" class="input is-medium" v-model="password" v-validate="'required'" v-bind:class="{'is-danger': errors.has('password')}" type="password" placeholder="Password">
                                 </div>
                             </div>
                             <div class="field">
@@ -27,11 +30,12 @@
                                     <input type="checkbox"> Remember me
                                 </label>
                             </div>
-                            <button class="button is-block is-info is-fullwidth">Login</button>
+                            <button class="button is-block is-info is-fullwidth" v-bind:disabled="errors.any()">Login</button>
+                            <b-loading :is-full-page="false" :active.sync="loading" :can-cancel="false"></b-loading>
                         </form>
                     </div>
-                    <div class="has-text-grey">
-                        <router-link :to="{name: 'register'}">Register</router-link> &middot;
+                    <div class="has-text-grey has-text-centered">
+                        <router-link :to="{name: 'users/register'}">Register</router-link> &middot;
                         <router-link :to="{name: 'index'}">Forgot Password</router-link>
                     </div>
                 </div>
@@ -39,6 +43,31 @@
         </div>
     </section>
 </template>
+
+<script>
+    import { LOGIN } from "~/store/actions.type";
+
+    export default {
+        data() {
+            return {
+                loading: false,
+                identifier: "",
+                password: "",
+            };
+        },
+        methods: {
+            login() {
+                this.loading = true;
+                this.$store.dispatch(LOGIN, {
+                    identifier: this.identifier,
+                    password: this.password,
+                }).then(() => {
+                    this.$router.push({name: "index"});
+                });
+            }
+        }
+    }
+</script>
 
 <style lang="scss" scoped>
 .box {
