@@ -12,12 +12,12 @@
                         <form>
                             <div class="field">
                                 <div class="control">
-                                    <input class="input" type="email" placeholder="Your Email" autofocus="">
+                                    <input class="input" type="email" placeholder="Email" autofocus="">
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="control">
-                                    <input class="input" type="password" placeholder="Your Password">
+                                    <input class="input" type="password" placeholder="Password">
                                 </div>
                             </div>
                             <div class="field">
@@ -29,9 +29,8 @@
                         </form>
                     </div>
                     <div class="has-text-grey">
-                        <router-link :to="{name: 'index'}">Sign Up</router-link> &middot;
-                        <router-link :to="{name: 'index'}">Forgot Password</router-link> &middot;
-                        <router-link :to="{name: 'index'}">Need Help?</router-link>
+                        <router-link :to="{name: 'register'}">Register</router-link> &middot;
+                        <router-link :to="{name: 'index'}">Forgot Password</router-link>
                     </div>
                 </div>
             </div>
