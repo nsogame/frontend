@@ -6,6 +6,7 @@ steps:
   image: node
   commands:
   - yarn
+  - echo 'API_BASE=/api/v1' >> .env
   - yarn run parcel build index.html
 
 - name: deploy
