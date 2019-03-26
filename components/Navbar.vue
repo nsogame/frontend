@@ -5,12 +5,16 @@
                 <router-link class="navbar-item" :to="{name: 'index'}">
                     &iexcl;nso
                 </router-link>
-                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </a>
+
+                <label class="navbar-burger burger" for="nav-toggle-state">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
             </div>
+
+            <input type="checkbox" id="nav-toggle-state" />
+
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start">
                     <router-link class="navbar-item" :to="{name: 'index'}">Home</router-link>
@@ -23,3 +27,13 @@
         </div>
     </nav>
 </template>
+
+<style lang="scss" scoped>
+#nav-toggle-state {
+  display: none;
+}
+
+#nav-toggle-state:checked ~ .navbar-menu {
+  display: block;
+}
+</style>
