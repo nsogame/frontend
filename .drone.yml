@@ -13,6 +13,8 @@ steps:
   settings:
     hosts:
     - nso.iptq.io
+    port: [ 22 ]
+    user: "${RSYNC_USER}"
     source: ./dist
     target: /var/www/nso
     recursive: true
