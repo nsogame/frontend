@@ -4,7 +4,7 @@ import { LOGIN, LOGOUT, PURGE_AUTH, REGISTER, SET_AUTH } from "./actions.type";
 
 const state = {
     errors: null,
-    user: {},
+    user: (user => user ? JSON.parse(user) : {})(localStorage.getItem("user")),
     isAuthenticated: !!$cookies.get("session"),
 };
 
@@ -35,10 +35,12 @@ const mutations = {
         state.isAuthenticated = false;
         state.user = {};
         $cookies.remove("session");
+        localStorage.removeItem("user");
     },
     [SET_AUTH](state, user) {
         state.isAuthenticated = true;
         state.user = user;
+        localStorage.setItem("user", JSON.stringify(user));
     }
 };
 
