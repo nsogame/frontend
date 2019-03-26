@@ -12,12 +12,14 @@
                         <form>
                             <div class="field">
                                 <div class="control">
-                                    <input class="input" type="email" placeholder="Email" autofocus="">
+                                    <label class="label">Email</label>
+                                    <input class="input is-medium" type="email" placeholder="Email" autofocus="">
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="control">
-                                    <input class="input" type="password" placeholder="Password">
+                                    <label class="label">Password</label>
+                                    <input class="input is-medium" type="password" placeholder="Password">
                                 </div>
                             </div>
                             <div class="field">

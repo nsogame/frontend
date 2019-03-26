@@ -11,12 +11,12 @@ export default new Router({
             component: () => import("./views/Home"),
         },
         {
-            path: "/login",
+            path: "/users/login",
             name: "login",
             component: () => import("./views/Login"),
         },
         {
-            path: "/register",
+            path: "/users/register",
             name: "register",
             component: () => import("./views/Register"),
         },
