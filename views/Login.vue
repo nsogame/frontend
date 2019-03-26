@@ -45,6 +45,7 @@
 </template>
 
 <script>
+    import { Toast } from "buefy/dist/components/toast";
     import { LOGIN } from "~/store/actions.type";
 
     export default {
@@ -62,7 +63,8 @@
                     identifier: this.identifier,
                     password: this.password,
                 }).then(() => {
-                    this.$router.push({name: "index"});
+                    Toast.open("Successfully logged in!");
+                    this.$router.push({name: "users/profile"});
                 });
             }
         }

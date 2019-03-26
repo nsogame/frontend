@@ -95,7 +95,8 @@
                     password: this.password,
                     captcha: this.captcha
                 }).then(() => {
-                    this.$router.push({name: "users/login"});
+                    Toast.open("Successfully registered!");
+                    this.$router.push({name: "users/profile"});
                 }).catch(err => {
                     this.loading = false;
                     this.loadCaptcha();

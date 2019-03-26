@@ -34,6 +34,7 @@
 
 <script>
     import { mapGetters } from "vuex";
+    import { Toast } from "buefy/dist/components/toast";
     import { LOGOUT } from "~/store/actions.type";
 
     export default {
@@ -43,6 +44,7 @@
         methods: {
             logout() {
                 this.$store.dispatch(LOGOUT).then(() => {
+                    Toast.open("Successfully logged out!");
                     this.$router.push({name: "index"});
                 });
             }
@@ -52,10 +54,10 @@
 
 <style lang="scss" scoped>
 #nav-toggle-state {
-  display: none;
+    display: none;
 }
 
 #nav-toggle-state:checked ~ .navbar-menu {
-  display: block;
+    display: block;
 }
 </style>

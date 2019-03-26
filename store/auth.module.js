@@ -10,7 +10,6 @@ const state = {
 
 const actions = {
     [LOGIN](context, credentials) {
-        console.log("logging in..");
         return new Promise((resolve, reject) => {
             axios.post(API_BASE + "/users/login", credentials).then(response => {
                 context.commit(SET_AUTH, response.data);
@@ -22,7 +21,10 @@ const actions = {
         context.commit(PURGE_AUTH);
     },
     [REGISTER](context, credentials) {
-        return axios.post(API_BASE + "/users/register", credentials);
+        return axios.post(API_BASE + "/users/register", credentials).then(response => {
+            context.commit(SET_AUTH, response.data);
+            resolve();
+        });
     },
 };
 
