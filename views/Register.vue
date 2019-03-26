@@ -2,7 +2,7 @@
     <section class="hero is-fullheight">
         <div class="hero-body">
             <div class="container">
-                <div class="column is-4 is-offset-4">
+                <div class="column is-6 is-offset-3">
                     <h3 class="title has-text-grey has-text-centered">Register</h3>
                     <div class="box">
                         <form v-on:submit.prevent="$validator.validateAll(); register();">
