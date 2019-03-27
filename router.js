@@ -16,7 +16,7 @@ export default new Router({
             component: () => import("./views/Login"),
         },
         {
-            path: "/users/profile",
+            path: "/users/profile/:id",
             name: "users/profile",
             component: () => import("./views/Profile"),
         },

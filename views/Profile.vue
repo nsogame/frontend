@@ -4,17 +4,22 @@
             <div class="container">
                 <div class="columns">
                     <div class="column is-one-quarter">
-                        <div class="box">
+                        <div class="box left-box">
                             <figure class="avatar has-text-centered">
                                 <img src="https://placehold.it/128x128?text=?">
                             </figure>
-                            <h1 class="title has-text-centered">{{ currentUser.username }}</h1>
+                            <h1 class="title has-text-centered">{{ currentUser.usernameCase }}</h1>
+                            <div class="has-text-centered">
+                                <country-flag country="us" size="normal" />
+                            </div>
                         </div>
                     </div>
                     <div class="column">
                         <b-tabs v-model="activeTab">
                             <b-tab-item v-for="mode in gameModes" :label="mode">
-                                hello
+                                <div class="box">
+                                    hello
+                                </div>
                             </b-tab-item>
                         </b-tabs>
                     </div>
@@ -25,9 +30,11 @@
 </template>
 
 <script>
+    import CountryFlag from "vue-country-flag";
     import { mapGetters } from "vuex";
 
     export default {
+        components: { CountryFlag },
         computed: {
             ...mapGetters(["currentUser", "isAuthenticated"])
         },
@@ -41,8 +48,11 @@
 </script>
 
 <style lang="scss" scoped>
-    .box {
+    .box.left-box {
         margin-top: 3rem;
+    }
+    .title {
+        margin-bottom: 0;
     }
     .avatar {
         margin-top: -70px;
