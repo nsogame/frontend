@@ -17,7 +17,7 @@
 
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start">
-                    <router-link class="navbar-item" :to="{name: 'index'}">Home</router-link>
+                    <router-link class="navbar-item" :to="{name: 'about'}">About</router-link>
                 </div>
                 <div class="navbar-end" v-if="isAuthenticated">
                     <router-link class="navbar-item" :to="{name: 'users/profile', params: {id: currentUser.id}}"><b>{{ currentUser.usernameCase }}</b></router-link>
