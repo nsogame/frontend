@@ -21,6 +21,7 @@
                 </div>
                 <div class="navbar-end" v-if="isAuthenticated">
                     <router-link class="navbar-item" :to="{name: 'users/profile', params: {id: currentUser.id}}"><b>{{ currentUser.usernameCase }}</b></router-link>
+                    <router-link class="navbar-item" :to="{name: 'users/settings'}">Settings</router-link>
                     <a class="navbar-item" v-on:click="logout">Logout</a>
                 </div>
                 <div class="navbar-end" v-if="!isAuthenticated">

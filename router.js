@@ -30,5 +30,10 @@ export default new Router({
             name: "users/register",
             component: () => import("./views/Register"),
         },
+        {
+            path: "/users/settings",
+            name: "users/settings",
+            component: () => import("./views/Settings"),
+        },
     ],
 });
